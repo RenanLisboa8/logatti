@@ -3,11 +3,11 @@ package br.com.p1.model;
 import java.util.Date;
 
 public class Venda {
-    public Venda(Date data, int funcionarioId, int clienteId) {
-        Data = data;
-        FuncionarioId = funcionarioId;
-        ClienteId = clienteId;
-    }
+//    public Venda(Date data, int funcionarioId, int clienteId) {
+//        Data = data;
+//        FuncionarioId = funcionarioId;
+//        ClienteId = clienteId;
+//    }
 
     private int Id;
     private Date Data;

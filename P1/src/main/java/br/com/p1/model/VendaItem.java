@@ -2,12 +2,12 @@ package br.com.p1.model;
 
 public class VendaItem {
 
-    public VendaItem(int vendaId, int produtoId, int quantidade, double total) {
-        VendaId = vendaId;
-        ProdutoId = produtoId;
-        Quantidade = quantidade;
-        Total = total;
-    }
+//    public VendaItem(int vendaId, int produtoId, int quantidade, double total) {
+//        VendaId = vendaId;
+//        ProdutoId = produtoId;
+//        Quantidade = quantidade;
+//        Total = total;
+//    }
 
     private int Id;
     private int VendaId;

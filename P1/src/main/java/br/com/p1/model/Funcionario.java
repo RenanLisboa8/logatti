@@ -1,11 +1,11 @@
 package br.com.p1.model;
 
 public class Funcionario {
-    public Funcionario(String nome, double salario, String cpf) {
-        Nome = nome;
-        Salario = salario;
-        Cpf = cpf;
-    }
+//    public Funcionario(String nome, double salario, String cpf) {
+//        Nome = nome;
+//        Salario = salario;
+//        Cpf = cpf;
+//    }
 
     private int Id;
     private String Nome;

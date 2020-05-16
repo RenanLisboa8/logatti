@@ -1,7 +1,7 @@
 package br.com.p1.dao;
 
 import br.com.p1.factory.ConnectionFactory;
-import br.com.p1.model.Cliente;
+import br.com.p1.model.Funcionario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,27 +9,60 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ClienteDao {
+public class FuncionarioDao {
     private Connection connection;
 
-    public ClienteDao() {
+    public FuncionarioDao() {
         this.connection = new ConnectionFactory().getConnection();
     }
 
-    public void inserirCliente(Cliente cliente) {
+    public void inserirFuncionario(Funcionario funcionario) {
+
         PreparedStatement stmt = null;
 
-        String sql = "insert into cliente " +
-                "(nome, cpf) " +
-                "values (?, ?)";
+        String sql = "insert into funcionarios " +
+                "(nome, salario, cpf) " +
+                "values (?, ?, ?)";
 
         try {
             connection.setAutoCommit(false);
 
             stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(1, cliente.getCpf());
+            stmt.setString(1, funcionario.getNome());
+            stmt.setDouble(1, funcionario.getSalario());
+            stmt.setString(1, funcionario.getCpf());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            throw new RuntimeException(e);
+        } finally {
+            dispose(stmt, connection);
+        }
+    }
+
+    public void atualizarFuncionar(Funcionario funcionario) {
+
+        PreparedStatement stmt = null;
+
+        String sql = "update funcionarios "
+                + "set nome=?, salario=?, cpf=? "
+                + "where funcionarioId=? ";
+
+        try {
+            connection.setAutoCommit(false);
+
+
+            stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, funcionario.getNome());
+            stmt.setDouble(1, funcionario.getSalario());
+            stmt.setString(1, funcionario.getCpf());
 
             stmt.executeUpdate();
 
@@ -46,48 +79,17 @@ public class ClienteDao {
         }
     }
 
-    public void atualizarCliente(Cliente cliente) {
-
+    public void excluirFuncionario(Funcionario funcionario) {
         PreparedStatement stmt = null;
 
-        String sql = "update cliente "
-                + "set nome=?, cpf=? "
-                + "where clienteId=? ";
-        try {
-            connection.setAutoCommit(false);
-
-            stmt = connection.prepareStatement(sql);
-
-            stmt.setString(1, cliente.getCpf());
-            stmt.setString(1, cliente.getNome());
-
-            stmt.executeUpdate();
-
-            connection.commit();
-        } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-            throw new RuntimeException(e);
-        } finally {
-            dispose(stmt, connection);
-        }
-
-    }
-
-    public void excluirCliente(Cliente cliente) {
-        PreparedStatement stmt = null;
-
-        String sql = "delete from cliente " +
-                "where clienteId=? ";
+        String sql = "delete from funcionarios " +
+                "where funcionarioId=?";
 
         try {
             connection.setAutoCommit(false);
             stmt = connection.prepareStatement(sql);
 
-            stmt.setInt(1, cliente.getId());
+            stmt.setInt(1, funcionario.getId());
 
             stmt.executeUpdate();
             connection.commit();
@@ -103,32 +105,29 @@ public class ClienteDao {
         }
     }
 
-    public ArrayList<Cliente> listarClientes() {
+    public ArrayList<Funcionario> listarFuncionarios() {
         PreparedStatement stmt = null;
 
         ResultSet rs = null;
 
-        ArrayList<Cliente> clientes = null;
+        ArrayList<Funcionario> funcionarios = null;
 
         try {
             connection.setAutoCommit(false);
 
-            stmt = this.connection.prepareStatement("select * from cliente");
+            stmt = this.connection.prepareStatement("select * from funcionarios");
 
             rs = stmt.executeQuery();
 
-            clientes = new ArrayList<Cliente>();
+            funcionarios = new ArrayList<Funcionario>();
 
             while (rs.next()) {
-                Cliente cliente = new Cliente();
+                Funcionario funcionario = new Funcionario();
 
-                cliente.setId(rs.getInt("produtoId"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setCpf(rs.getString("cpf"));
-
-                clientes.add(cliente);
-
-                connection.commit();
+                funcionario.setId(rs.getInt("funcionarioId"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setCpf(rs.getString("cpf"));
             }
         } catch (SQLException e) {
             try {
@@ -140,44 +139,7 @@ public class ClienteDao {
         } finally {
             dispose(stmt, rs, connection);
         }
-        return clientes;
-    }
-
-    public  ArrayList<Cliente> buscarClientes(String busca) {
-        PreparedStatement stmt = null;
-
-        ResultSet rs = null;
-        ArrayList<Cliente> clientes = null;
-
-        try {
-            connection.setAutoCommit(false);
-            stmt = connection.prepareStatement("select * from cliente where cpf like ?");
-            stmt.setString(1, busca + "%");
-
-            rs = stmt.executeQuery();
-
-            clientes = new ArrayList<Cliente>();
-
-            while (rs.next()) {
-                Cliente cliente = new Cliente();
-
-                cliente.setId(rs.getInt("clienteId"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setCpf(rs.getString("cpf"));
-
-                clientes.add(cliente);
-            }
-        } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-            throw new RuntimeException(e);
-        } finally {
-            dispose(stmt, rs, connection);
-        }
-        return clientes;
+        return funcionarios;
     }
 
     public void dispose(PreparedStatement stmt, ResultSet rs, Connection c) {
