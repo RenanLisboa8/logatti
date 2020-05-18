@@ -7,7 +7,15 @@ public class Venda {
     private Date Data;
     private int FuncionarioId;
     private int ClienteId;
+    private double Total;
 
+    public double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(double total) {
+        Total = total;
+    }
 
     public int getId() {
         return Id;

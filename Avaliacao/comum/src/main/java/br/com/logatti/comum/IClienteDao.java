@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public interface IClienteDao extends Remote {
     void inserirCliente(Cliente cliente) throws RemoteException;
 
-    void alterarCliente(Cliente cliente) throws RemoteException;
+    void atualizarCliente(Cliente cliente) throws RemoteException;
 
     void excluirCliente(Cliente cliente) throws RemoteException;
 
-    ArrayList<Cliente> listarCliente() throws RemoteException;
+    ArrayList<Cliente> listarClientes() throws RemoteException;
 
-    ArrayList<Cliente> buscarCliente(String s) throws RemoteException;
+    ArrayList<Cliente> buscarClientes(String s) throws RemoteException;
 }

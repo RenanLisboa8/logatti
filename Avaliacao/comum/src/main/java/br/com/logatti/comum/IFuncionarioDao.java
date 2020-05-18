@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public interface IFuncionarioDao extends Remote {
     void inserirFuncionario(Funcionario funcionario) throws RemoteException;
 
-    void alterarFuncionario(Funcionario funcionario) throws RemoteException;
+    void atualizarFuncionar(Funcionario funcionario) throws RemoteException;
 
     void excluirFuncionario(Funcionario funcionario) throws RemoteException;
 
-    ArrayList<Funcionario> listarFuncionario() throws RemoteException;
+    ArrayList<Funcionario> listarFuncionarios() throws RemoteException;
 
-    ArrayList<Funcionario> buscarFuncionario(String s) throws RemoteException;
+    ArrayList<Funcionario> buscarFuncionarios(String s) throws RemoteException;
 }
