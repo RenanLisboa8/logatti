@@ -24,7 +24,7 @@ public class Servico {
         }
     }
 
-    public static void Main(String[] args) throws RemoteException {
+    public static void main(String[] args) throws RemoteException {
         new Servico();
     }
 }
