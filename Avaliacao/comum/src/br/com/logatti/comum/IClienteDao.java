@@ -1,6 +1,6 @@
-package br.com.logatti.comum;
+package src.br.com.logatti.comum;
 
-import br.com.logatti.model.Cliente;
+import src.br.com.logatti.model.Cliente;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

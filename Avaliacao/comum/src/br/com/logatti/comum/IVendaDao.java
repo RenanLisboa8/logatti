@@ -1,7 +1,7 @@
-package br.com.logatti.comum;
+package src.br.com.logatti.comum;
 
-import br.com.logatti.model.Venda;
-import br.com.logatti.model.VendaItem;
+import src.br.com.logatti.model.Venda;
+import src.br.com.logatti.model.VendaItem;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

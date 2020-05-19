@@ -1,4 +1,4 @@
-package br.com.logatti.factory;
+package src.br.com.logatti.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package br.com.logatti.model;
+package src.br.com.logatti.model;
 
 public class Funcionario {
     private int Id;

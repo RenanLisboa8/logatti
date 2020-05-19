@@ -1,7 +1,7 @@
-package br.com.logatti.dao;
-import br.com.logatti.comum.IProdutoDao;
-import br.com.logatti.factory.ConnectionFactory;
-import br.com.logatti.model.Produto;
+package src.br.com.logatti.dao;
+import src.br.com.logatti.comum.IProdutoDao;
+import src.br.com.logatti.factory.ConnectionFactory;
+import src.br.com.logatti.model.Produto;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

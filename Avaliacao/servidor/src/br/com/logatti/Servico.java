@@ -1,9 +1,9 @@
-package br.com.logatti;
+package src.br.com.logatti;
 
-import br.com.logatti.dao.ClienteDao;
-import br.com.logatti.dao.FuncionarioDao;
-import br.com.logatti.dao.ProdutoDao;
-import br.com.logatti.dao.VendaDao;
+import src.br.com.logatti.dao.ClienteDao;
+import src.br.com.logatti.dao.FuncionarioDao;
+import src.br.com.logatti.dao.ProdutoDao;
+import src.br.com.logatti.dao.VendaDao;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
