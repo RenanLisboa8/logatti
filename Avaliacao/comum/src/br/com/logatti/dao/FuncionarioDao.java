@@ -17,8 +17,8 @@ public class FuncionarioDao extends UnicastRemoteObject implements IFuncionarioD
     private static final long serialVersionUID = -7082172599361459036L;
     private Connection connection;
 
-    public FuncionarioDao() throws RemoteException {
-        this.connection = new ConnectionFactory().getConnection();
+    public FuncionarioDao() throws RemoteException, ClassNotFoundException {
+        new ConnectionFactory().getConnection();
     }
 
     public void inserirFuncionario(Funcionario funcionario) {

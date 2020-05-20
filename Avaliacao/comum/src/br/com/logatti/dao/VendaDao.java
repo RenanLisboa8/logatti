@@ -19,8 +19,8 @@ public class VendaDao extends UnicastRemoteObject implements IVendaDao {
     private static final long serialVersionUID = 6006315725771594101L;
     private Connection connection;
 
-    public VendaDao() throws RemoteException {
-        this.connection = new ConnectionFactory().getConnection();
+    public VendaDao() throws RemoteException, ClassNotFoundException {
+        new ConnectionFactory().getConnection();
     }
 
     private void inserirVendaItem(Connection con, ArrayList<VendaItem> produtosComprados, int vendaId) {

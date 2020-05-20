@@ -9,8 +9,13 @@
         <module name="Avaliacao" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Avaliacao" target="1.5" />
+    <bytecodeTargetLevel target="1.4">
+      <module name="Avaliacao" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Avaliacao" options="" />
+    </option>
   </component>
 </project>

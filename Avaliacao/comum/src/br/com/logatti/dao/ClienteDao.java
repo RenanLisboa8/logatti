@@ -16,8 +16,8 @@ public class ClienteDao extends UnicastRemoteObject implements IClienteDao {
     private static final long serialVersionUID = 162862048043243627L;
     private Connection connection;
 
-    public ClienteDao() throws RemoteException {
-        this.connection = new ConnectionFactory().getConnection();
+    public ClienteDao() throws RemoteException, ClassNotFoundException {
+        new ConnectionFactory().getConnection();
     }
 
     public void inserirCliente(Cliente cliente) {

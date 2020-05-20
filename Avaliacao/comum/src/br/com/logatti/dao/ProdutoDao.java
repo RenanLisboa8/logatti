@@ -16,8 +16,8 @@ public class ProdutoDao extends UnicastRemoteObject implements IProdutoDao {
     private static final long serialVersionUID = -448676796652986962L;
     private Connection connection;
 
-    public ProdutoDao() throws RemoteException {
-        this.connection = new ConnectionFactory().getConnection();
+    public ProdutoDao() throws RemoteException, ClassNotFoundException {
+        new ConnectionFactory().getConnection();
     }
 
     public void saidaEstoque(int produtoId, int quantidade) {
